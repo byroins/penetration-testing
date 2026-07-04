@@ -57,7 +57,7 @@ index:
   text: "Stay Hungry, Stay Foolish."
   slogan:
     enable: true
-    text: "Web渗透测试 / 漏洞复现 / 源码审计 / 专注于实战安全研究"
+    text: "Web Penetration Testing / Vulnerability Reproduction / Source Code Auditing / SRC / Focused on Hands-on Security Research"
   
   # 文章摘要（对齐 NexT excerpt_description）
   excerpt:
