@@ -1,0 +1,174 @@
+# -----------------------------------------
+# Fluid 主题专用定制配置文件
+# -----------------------------------------
+
+# ---------------------------
+# 一、 全局主题基础外观与色彩
+# ---------------------------
+theme:
+  # 日夜间模式
+  dark_mode:
+    enable: true        # 开启日夜间手动切换
+    default: light      # 默认日间模式
+  
+  # 页面入场动画
+  web_animations:
+    enable: true        # 开启页面入场动画
+  
+  # 回到顶部按钮（对齐 NexT back2top）
+  scroll_top_btn:
+    enable: true
+    arrow_up_icon: "iconfont icon-arrowup" # 向上箭头
+  
+  # 颜色全局配置（对齐 NexT 标志性的墨绿色）
+  color:
+    # 日间模式核心配色
+    light:
+      text_color: "#3c4858"
+      background_color: "#f8f9fa"
+      link_color: "#37c6c0"        # 链接颜色，对齐你的 NexT 配色
+      link_hover_color: "#2bb0aa"
+      navbar_bg_color: "#2f4154"
+    # 夜间模式核心配色
+    dark:
+      text_color: "#c4c6c9"
+      background_color: "#1d1e22"
+      link_color: "#37c6c0"
+      link_hover_color: "#2bb0aa"
+
+# ---------------------------
+# 二、 导航栏配置（对齐 NexT menu）
+# ---------------------------
+navbar:
+  blog_title: "Byron's Security Lab"
+  menu:
+    - { key: "home", link: "/", icon: "iconfont icon-home-fill" }
+    - { key: "archive", link: "/archives/", icon: "iconfont icon-archive-fill" }
+    - { key: "category", link: "/categories/", icon: "iconfont icon-category-fill" }
+    - { key: "tags", link: "/tags/", icon: "iconfont icon-tags-fill" }
+    - { key: "about", link: "/about/", icon: "iconfont icon-user-fill" }
+
+# ---------------------------
+# 三、 首页配置
+# ---------------------------
+index:
+  banner_img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5"
+  text: "Stay Hungry, Stay Foolish."
+  slogan:
+    enable: true
+    text: "Web渗透测试 / 漏洞复现 / 源码审计 / 专注于实战安全研究"
+  
+  # 文章摘要（对齐 NexT excerpt_description）
+  excerpt:
+    enable: true
+    max_lines: 5         # 按行数或字数截取
+  post_url_target: _self # 首页点击文章在当前页打开
+  
+  # 查看全文按钮
+  read_more_btn:
+    enable: true
+    text: "阅读全文"
+
+# ---------------------------
+# 四、 独立页面 Banner 配置（解决 Fluid 层级差异）
+# ---------------------------
+archive:
+  banner_img: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7"
+category:
+  banner_img: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7"
+tag:
+  banner_img: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7"
+  # 标签云配置修正（对齐 NexT tagcloud）
+  tagcloud:
+    min_img_size: 14
+    max_img_size: 26
+about:
+  banner_img: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7"
+
+# ---------------------------
+# 五、 文章页核心配置
+# ---------------------------
+post:
+  banner_img: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7"
+  
+  # 文章元信息（修正不蒜子阅读量层级）
+  meta:
+    author:
+      enable: true
+      name: "Byron"
+    date:
+      enable: true
+      format: "YYYY-MM-DD"
+    updated:
+      enable: true
+      format: "YYYY-MM-DD"
+    category:
+      enable: true
+    wordcount:
+      enable: true    # 依赖 hexo-wordcount 插件
+    min2read:
+      enable: true
+      awl: 2
+      wpm: 300
+    views:
+      enable: true    # 激活文章阅读量统计（内置不蒜子）
+
+  # 文章目录（对齐 NexT Gemini 悬浮侧边栏体验）
+  toc:
+    enable: true
+    heading_selector: "h1,h2,h3,h4,h5,h6"
+    collapse_depth: 3 # 默认折叠深度，超过 3 级默认折叠，保持干净
+    number: true      # 显示目录编号
+
+  # 上一篇/下一篇导航
+  prev_next:
+    enable: true
+
+  # 顶部阅读进度条
+  reading_progress:
+    enable: true
+    anchor: top
+    height: 3px
+    color: "#37c6c0" # 完美复刻你的经典青色进度条
+
+# ---------------------------
+# 六、 全局代码块增强（修正 Fluid 专属键名）
+# ---------------------------
+code:
+  copy_btn: true      # 开启一键复制
+  highlight:
+    lib: "highlightjs" # 使用主流的 highlightjs 引擎
+    style: "Mac"       # Mac 风格三色圆点控制台外壳
+    bg_color: true     # 启用自定义背景色
+  fold:
+    enable: true      # 开启长代码折叠
+    height: 400       # 超过 400 像素自动折叠
+
+# ---------------------------
+# 七、 页脚配置
+# ---------------------------
+footer:
+  content: '© 2026 Byron. All Rights Reserved.'
+  statistics:
+    enable: true      # 开启全站访问统计
+    pv_format: "总访问量 {} 次"
+    uv_format: "总访客数 {} 人次"
+
+# ---------------------------
+# 八、 本地搜索引擎与优化
+# ---------------------------
+search:
+  enable: true
+  path: search.xml
+  field: post
+  content: true
+
+# ---------------------------
+# 九、 性能与图片加载优化
+# ---------------------------
+lazyload:
+  enable: true        # 开启图片懒加载（修正键名位置）
+
+# 图片点击放大功能（完美替代 NexT fancybox）
+custom_js:
+  - src: https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js
