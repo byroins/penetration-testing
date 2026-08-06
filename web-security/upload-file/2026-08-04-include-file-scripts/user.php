@@ -1,0 +1,4 @@
+<?php
+$username = "admin";
+$password = "123456";
+?>
