@@ -120,7 +120,7 @@ tags:
   | **zip://**  | ZIP归档            |
   | data://     | 内联数据(RFC 2397) |
 
-- php:
+- php://
 
   - php://filter 元封装器, 读源码首选, 无任何配置前提
   - php://input 请求体原始只读流, 配合 include 把 POST 体当代码执行
