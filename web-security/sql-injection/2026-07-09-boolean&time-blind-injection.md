@@ -7,7 +7,8 @@ categories:
 tags:
   - sqli-labs
   - sql-injection
-  - information_schema
+  - boolean
+  - Time
 ---
 
 > Environment: PHP 7.3.4 + MySQL 5.7.26
