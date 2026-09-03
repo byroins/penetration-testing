@@ -143,7 +143,7 @@ tags:
 
   - 查看源码
 
-    ![](2026-07-20-xss-bypass-decision-tree.md/2-1.png)
+    ![](2026-07-20-xss-bypass-decision-tree/2-1.png)
 
   > 可见 `<>` 未被过滤，但 Payload 仍在 `value` 属性内，需用 `">` 提前闭合
 
@@ -155,7 +155,7 @@ tags:
 
 - **Level 3**
 
-  ![](2026-07-20-xss-bypass-decision-tree.md/3-1.png)
+  ![](2026-07-20-xss-bypass-decision-tree/3-1.png)
 
   > 可见在第17行代码中, <> 和 "被编码, 尝试使用鼠标点击事件onclick
 
@@ -163,7 +163,7 @@ tags:
   'onclick='alert(1)
   ```
 
-  ![](2026-07-20-xss-bypass-decision-tree.md/3-2.png)
+  ![](2026-07-20-xss-bypass-decision-tree/3-2.png)
 
   > 输入框中写入Payload后点击触发事件过关
 
@@ -181,7 +181,7 @@ tags:
   "onclick="alert(1)
   ```
 
-  ![](2026-07-20-xss-bypass-decision-tree.md/4-1.png)
+  ![](2026-07-20-xss-bypass-decision-tree/4-1.png)
 
   ---
 
@@ -199,7 +199,7 @@ tags:
   "><a href="javascript:alert(1)">click</a>
   ```
 
-  ![](2026-07-20-xss-bypass-decision-tree.md/5-1.png)
+  ![](2026-07-20-xss-bypass-decision-tree/5-1.png)
 
   ---
 
@@ -241,7 +241,7 @@ tags:
 
 - **Level 8**
 
-  ![](2026-07-20-xss-bypass-decision-tree.md/8-1.png)
+  ![](2026-07-20-xss-bypass-decision-tree/8-1.png)
 
   > 源码可见注入发生在<a href>中, 且script会被过滤, 使用编码器将s编码`&#x73;`
 
@@ -251,13 +251,13 @@ tags:
   java&#x73;cript:alert(1)
   ```
 
-  ![](2026-07-20-xss-bypass-decision-tree.md/8-2.png)
+  ![](2026-07-20-xss-bypass-decision-tree/8-2.png)
 
   ---
 
 - **Level 9**
 
-  ![](2026-07-20-xss-bypass-decision-tree.md/9-1.png)
+  ![](2026-07-20-xss-bypass-decision-tree/9-1.png)
 
   > 将链接改为标准格式即可
 
@@ -265,7 +265,7 @@ tags:
   java&#x73;cript:alert('http://baidu.com')
   ```
 
-  ![](2026-07-20-xss-bypass-decision-tree.md/9-2.png)
+  ![](2026-07-20-xss-bypass-decision-tree/9-2.png)
 
   ---
 
@@ -273,9 +273,9 @@ tags:
 
   - 主页无输入框, 且keyword的参数不影响value(通过以下源码可知)
 
-    ![](2026-07-20-xss-bypass-decision-tree.md/10-1.png)
+    ![](2026-07-20-xss-bypass-decision-tree/10-1.png)
 
-  ![](2026-07-20-xss-bypass-decision-tree.md/10-2.png)
+  ![](2026-07-20-xss-bypass-decision-tree/10-2.png)
 
   > 通过源码可知, 传参点在input内
   
@@ -283,7 +283,7 @@ tags:
   
   `t_link=1` `t_history=1` `t_sort=1`
   
-  ![](2026-07-20-xss-bypass-decision-tree.md/10-3.png)
+  ![](2026-07-20-xss-bypass-decision-tree/10-3.png)
   
   > 可见注入点在t_sort字段中, 构造以下payload
   
@@ -291,17 +291,17 @@ tags:
   click" type="button" onclick="alert(1)
   ```
   
-  ![](2026-07-20-xss-bypass-decision-tree.md/10-4.png)
+  ![](2026-07-20-xss-bypass-decision-tree/10-4.png)
   
   ---
   
 - **Level 11**
 
-  ![](2026-07-20-xss-bypass-decision-tree.md/11-1.png)
+  ![](2026-07-20-xss-bypass-decision-tree/11-1.png)
 
   > 通过以上源码可知, 注入点在t_ref 且或许类似于Request的Referer字段, 利用burpsuite测试
 
-  ![](2026-07-20-xss-bypass-decision-tree.md/11-2.png)
+  ![](2026-07-20-xss-bypass-decision-tree/11-2.png)
 
   > 抓包数据印证猜测无误, 本页面确实是由level 10 通过构造的t_sort Payload跳转
 
@@ -311,17 +311,17 @@ tags:
 
   - 将Request中Referer字段值替换为以上Payload,  Forward后得到以下结果:
 
-  ![](2026-07-20-xss-bypass-decision-tree.md/11-3.png)
+  ![](2026-07-20-xss-bypass-decision-tree/11-3.png)
 
   ---
 
 - **Level 12**
 
-  ![](2026-07-20-xss-bypass-decision-tree.md/12-1.png)
+  ![](2026-07-20-xss-bypass-decision-tree/12-1.png)
 
   > 通过源码可知, t_ua 为Request中User-Agent字段, 同样使用burpsuite抓包
 
-  ![](2026-07-20-xss-bypass-decision-tree.md/12-2.png)
+  ![](2026-07-20-xss-bypass-decision-tree/12-2.png)
 
   ```js
   click" type="button" onclick="alert(1)
@@ -329,17 +329,17 @@ tags:
 
   - 将Request中User-Agent字段值替换为以上Payload,  Forward后得到以下结果:
 
-  ![](2026-07-20-xss-bypass-decision-tree.md/12-3.png)
+  ![](2026-07-20-xss-bypass-decision-tree/12-3.png)
 
   ---
 
 - **Level 13**
 
-  ![](2026-07-20-xss-bypass-decision-tree.md/13-1.png)
+  ![](2026-07-20-xss-bypass-decision-tree/13-1.png)
 
   > 通过源码可知, t_cook 为Request中Cookie字段, 同样使用burpsuite抓包
 
-  ![](2026-07-20-xss-bypass-decision-tree.md/13-2.png)
+  ![](2026-07-20-xss-bypass-decision-tree/13-2.png)
 
   ```js
   click" type="button" onclick="alert(1)
@@ -347,7 +347,7 @@ tags:
 
   - 将Request中Cookie字段值替换为以上Payload,  Forward后得到以下结果:
 
-  ![](2026-07-20-xss-bypass-decision-tree.md/13-3.png)
+  ![](2026-07-20-xss-bypass-decision-tree/13-3.png)
 
   ---
 ### 2.4 总结
@@ -364,3 +364,5 @@ tags:
 | 11, 12, 13 | HTTP协议+Request请求头报文+隐藏属性+事件属性 |
 
 > Level 1-9 聚焦标签与属性注入绕过, Level 10-13 则将攻击面扩展到HTTP请求头与隐藏参数, 体现了真实攻防中的信息收集能力
+
+---
