@@ -1,0 +1,16 @@
+# 构建产物
+build/
+*.class
+
+# 运行时产物（载荷 / cookie / 报告）
+*.bin
+*cookie*.txt
+x.txt
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# 依赖 jar（如不希望入库，删掉下面这行；已在库内则忽略）
+# lib/*.jar

@@ -11,3 +11,13 @@ All in-depth technical articles are published on my personal blog: [https://byro
 ---
 
 ## Repository Structure
+
+```
+penetration-testing/
+├── dict                     # 社工字典
+├── Hermes-PentestAgent      # Hermes-PentestAgent(自研渗透测试AI框架)
+├── scripts                  # Scripts
+├── skills                   # Skills
+├── tools                    # 自研工具
+```
+
