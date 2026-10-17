@@ -1,0 +1,179 @@
+{
+	"extName":{
+		"message":"ReconForge",
+		"description":"Extension name"
+	},
+	"extDescription":{
+		"message":"A passive automated tool for information collection, supports automatic extraction of IP, IP+port, domain name, ID card, mobile phone number, email, JWT, encryption algorithm, sensitive information, path, incomplete path, complete url, static path and other fields when visiting pages.",
+		"description":"Extension description"
+	},
+	"Zhuye":{
+		"message":"Home",
+		"description":"Home"
+	},
+	"Peizhi":{
+		"message":"Settings",
+		"description":"Settings page"
+	},
+	"popupProcessing":{
+		"message":"Processing: ",
+		"description":"Processing"
+	},
+	"popupComplete":{
+		"message":"Completed: ",
+		"description":"Completed"
+	},
+	"popupCopy":{
+		"message":"Copy",
+		"description":"Copy button"
+	},
+	"popupCopyurl":{
+		"message":"Copy URL",
+		"description":"Copy url button"
+	},
+	"popupTipClickBeforeCopy":{
+		"message":"Please click on the page before copying",
+		"description":"Tip: Please click on the page before copying"
+	},
+	"popupIp":{
+		"message":"IP",
+		"description":"IP"
+	},
+	"popupIpPort":{
+		"message":"IP_PORT",
+		"description":"IP_PORT"
+	},
+	"popupDomain":{
+		"message":"Domain",
+		"description":"Domain"
+	},
+	"popupSfz":{
+		"message":"ID Card",
+		"description":"ID Card"
+	},
+	"popupMobile":{
+		"message":"Mobile",
+		"description":"Mobile"
+	},
+	"popupMail":{
+		"message":"Email",
+		"description":"Email"
+	},
+	"popupJwt":{
+		"message":"JWT",
+		"description":"JWT"
+	},
+	"popupAlgorithm":{
+		"message":"Algorithm",
+		"description":"Algorithm"
+	},
+	"popupSecret":{
+		"message":"Secret",
+		"description":"Secret"
+	},
+	"popupPath":{
+		"message":"Path",
+		"description":"Path"
+	},
+	"popupIncompletePath":{
+		"message":"IncompletePath",
+		"description":"IncompletePath"
+	},
+	"popupUrl":{
+		"message":"Url",
+		"description":"Url"
+	},
+	"popupStaticPath":{
+		"message":"StaticUrl",
+		"description":"StaticUrl"
+	},
+	"settingClearCache":{
+		"message":"Clear Cache",
+		"description":"Settings page title: Clear Cache"
+	},
+	"settingClearComplete":{
+		"message":"Clear Completed",
+		"description":"Settings page tip: Clear Completed"
+	},
+	"settingClearLocalStorage":{
+		"message":"Clear",
+		"description":"Settings page button: Clear"
+	},
+	"settingGlobalFloatingWindow":{
+		"message":"Global Floating Window",
+		"description":"Settings page title: Global Floating Window"
+	},
+	"settingOpened":{
+		"message":"Open",
+		"description":"Configuration item status: Open"
+	},
+	"settingClosed":{
+		"message":"Close",
+		"description":"Configuration item status: Close"
+	},
+	"settingAutoTimeout":{
+		"message":"Auto Timeout",
+		"description":"Settings page title: Auto Timeout"
+	},
+	"settingSafe":{
+		"message":"Safe Mode",
+		"description":"Settings page title: Safe Mode"
+	},
+	"settingWebhook":{
+		"message":"Webhook",
+		"description":"Settings page title: Webhook"
+	},
+	"settingWebhookUrl":{
+		"message":"Callback URL",
+		"description":"Settings page title: Callback URL"
+	},
+	"settingWebhookMethod":{
+		"message":"Request Method",
+		"description":"Settings page title: Request Method"
+	},
+	"settingWebhookArg":{
+		"message":"Request Parameters",
+		"description":"Settings page title: Request Parameters"
+	},
+	"settingWebhookHeaders":{
+		"message":"Custom Headers",
+		"description":"Settings page title: Custom Headers"
+	},
+	"settingDomainAllowList":{
+		"message":"Domain Allowlist",
+		"description":"Settings page title: Domain Allowlist"
+	},
+	"settingDomainAllowListTip":{
+		"message":"Please enter domain allowlist, one per line",
+		"description":"Settings page input tip: Please enter domain allowlist, one per line"
+	},
+	"settingResetAndSave":{
+		"message":"Clear and Save",
+		"description":"Settings page button: Clear and Save"
+	},
+	"settingSave":{
+		"message":"Save",
+		"description":"Settings page button: Save"
+	},
+	"settingInstructions": {
+		"message": "Instructions",
+		"description": "Settings page title: Instructions"
+	},
+	"getstartedContent":{
+		"message":"## Home page function\n\n- Processing progress: Display the processing progress below the homepage, such as in progress: 1/20, where 1 is the number of requested links and 20 is the total number of links to be requested. If all requests are completed, it will be displayed as processing completed: 20/20.\n\n## Basic Information\n\n1. IP\n\n2. IP_PORT\n\n3. Domain name\n\n4. URL\n\n## Path information\n\n1. Batch copying\n\n- Copy all paths: including all path information for Path, Incomplete Path, and Static URL\n\n- Copy domain name+path: The complete URL address composed of all paths of the current page domain name, including Path, Incomplete Path, and Static URL\n\n2. Path: Extract all Path paths\n\n3. Incomplete Path: The extracted incomplete path\n\n4. Static URL: Static file URL address\n\n- Copy button: The copy button for each area can copy the content of the corresponding area\n\n- Copy URL button: Copy the content of the corresponding area and concatenate the URL of the current page at the beginning of each line to complete the URL address\n\n- The paths in each region are classified according to their source addresses\n\n## Sensitive information\n\n1. Mobile phone number\n\n2. ID card\n\n3. Email\n\n4. JWT\n\n5. Algorithm\n\n6. Secret\n\n## Configuration page function\n\n1. Clean up cache\n\n* Because the extracted data is stored in the browser's local storage, if not cleaned up for a long time, it may occupy machine memory.\n\n* The plugin has added automatic expiration logic in version 2.0.17, and data that has not been accessed for 7 days will expire.\n\n* Users can also manually click Clean to immediately clear stored data.\n\n2. Global floating window\n\n* After opening, the ReconForge page will be embedded into every opened page, eliminating the need for clicking on plugins.\n\n* But currently, no new features have been added to the global floating window, only basic features remain available.\n\n3. Automatic timeout\n\n* The default configuration is closed, and requests initiated in the plugin backend after opening will be terminated after 2 seconds to avoid long waiting times.\n\n4. Safe Mode\n\n* In safe mode, the plugin will only access JS resources to avoid exiting the current page or requesting sensitive operation links.\n\n* After turning off security mode, all URLs with src and href attributes on the current page will be accessed without distinguishing link types, including CSS, images, or APIs, which may result in unexpected requests.\n\n* The default safe mode is turned on.\n\n5. Webhook callback\n\n* I suggest using post because the get parameter has a length limit.\n\n* If the request parameter position is written with the parameter name, then the request body is in the format of data={\"xx \": \"xx\"}.\n\n* If the parameter location is not specified with the parameter name, the request will be in JSON format.\n\n* The request body includes configuration, progress, all extracted information, and corresponding sources.\n\n* Some websites extract a lot of content, so you need to pay attention to configuring your webhook site to accept so much data in one request.\n\n6. Domain whitelist\n\n* The judgment logic ends with xxx, and domain names on the whitelist will not be requested.\n\n7. Instructions for use",
+		"description":"getstarted"
+	},
+	"getstartedTitle": {
+		"message": "ReconForge User Guide",
+		"description": "User guide page title"
+	},
+	"popupExport": {
+		"message": "Export CSV",
+		"description": "Export button"
+	},
+	"popupExportEmpty": {
+		"message": "No data to export",
+		"description": "Shown when there is nothing to export"
+	}
+
+}

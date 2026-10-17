@@ -1,0 +1,43 @@
+
+【1】resolveRelativePath —— 相对路径归一化（RFC 3986 相对引用解析）
+  ✅ 真实样本 ../../apply/myDesktop/changePwd.html
+  ✅ 真实样本 ../../apply/myDesktop/index.html
+  ✅ 真实样本 ../../apply/myDesktop/downloadCenter.html
+  ✅ 真实样本 ../../apply/myDesktop/announceMent.html
+  ✅ 真实样本 ../../../index.html
+  ✅ 对照·旧实现输出（≠正确地址）
+  ✅ 对照·新实现结果 ≠ 旧实现结果（确实修掉了）
+  ✅ ./ 当前目录
+  ✅ ../ 上一级
+  ✅ ../ 越过根目录（塌缩到根）
+  ✅ 保留端口与查询串
+  ✅ 非法 URL → null（走调用方兜底）
+
+【2】export_data + csv_escape —— 导出 CSV（stub chrome/DOM，捕获下载内容）
+  ✅ csv_escape 普通值
+  ✅ csv_escape 含双引号
+  ✅ 导出内容带 UTF-8 BOM
+  ✅ CSV 表头
+  ✅ CSV 行数（1 表头 + 5 条数据）
+  ✅ ip 行
+  ✅ domain 行（无来源 → 空）
+  ✅ path 第 2 行 = ../ 原样保留在 CSV 里
+  ✅ path 第 3 行（../）
+  ✅ path 第 4 行（含引号转义）
+  ✅ 无数据时不下载
+  ✅ 无数据时给出提示
+  ✅ 空类目时给出提示
+
+【3】content.js —— 去重修复（静态断言）
+  ✅ 旧的空操作 pop(href) 已不存在
+  ✅ 发送的是去重后的列表（tmp_target_list）
+  ✅ 使用 Set 去重
+  ✅ 不再发送未去重的 target_list
+  ✅ resolveRelativePath 调用点数量（2 处调用 + 1 处定义）
+  ✅ 旧的「./ 专用分支」已消失（两处）
+  ✅ 旧的手工 basePath 拼接已消失
+  ✅ Set 去重语义
+
+────────────────────────────────────────
+结果: 33 通过 / 0 失败
+全部通过 ✅

@@ -1,0 +1,26 @@
+{
+  "name": "__MSG_extName__",
+  "version": "2.1.1.1",
+  "manifest_version": 3,
+  "description": "__MSG_extDescription__",  
+  "permissions": [     
+    "tabs",
+    "storage",
+    "unlimitedStorage"
+  ],
+  "content_scripts": [{
+      "matches": [
+        "https://*/*","http://*/*","file://*"
+      ],
+      "js": ["src/js/content.js"]
+  }],
+  "icons":{"16": "src/assets/icons/Frog.png","48": "src/assets/icons/Frog.png","128": "src/assets/icons/Frog.png"},
+  "background":{
+    "service_worker": "src/js/background.js"
+  },
+  "action": {
+    "default_icon": {"16": "src/assets/icons/Frog.png","48": "src/assets/icons/Frog.png","128": "src/assets/icons/Frog.png"},
+    "default_popup": "src/html/popup.html"
+  },
+  "default_locale": "zh_CN"
+}

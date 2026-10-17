@@ -1,0 +1,326 @@
+<!--  
+@Date    : 2020-09-12 16:26:48
+@Author  : residuallaugh 
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --background-color: #f5f7fa;
+            --border-color: #e8e8e8;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --danger-color: #e74c3c;
+            --text-color: #333;
+            --text-light: #7f8c8d;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 780px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 14px;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+
+        /* 导航栏样式 */
+        .nav-bar {
+            display: flex;
+            height: 40px;
+            margin: 15px 15px 0;
+            border: 1px solid var(--border-color);
+            border-radius: 4px 4px 0 0;
+            overflow: hidden;
+        }
+
+        .nav-item {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            background-color: #fff;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+
+        .nav-item.active {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+
+        .nav-item:hover:not(.active) {
+            background-color: #f0f0f0;
+        }
+
+        /* 主内容区域 */
+        .main-content {
+            width: 780px;
+            min-height: 600px;
+            margin: 0 15px 15px;
+            background-color: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 0 0 4px 4px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+        }
+
+        /* 设置项容器 */
+        .setting-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .setting-item:last-child {
+            border-bottom: none;
+        }
+
+        /* 设置项标题 */
+        .setting-title {
+            font-size: 16px;
+            font-weight: bold;
+            padding-left: 8px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        /* 开关按钮 */
+        .toggle-btn {
+            width: 60px;
+            height: 28px;
+            border-radius: 14px;
+            background-color: #ccc;
+            position: relative;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .toggle-btn.active {
+            background-color: var(--success-color);
+        }
+
+        .toggle-btn::after {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: white;
+            top: 2px;
+            left: 2px;
+            transition: transform 0.3s;
+        }
+
+        .toggle-btn.active::after {
+            transform: translateX(32px);
+        }
+
+        /* 操作按钮 */
+        .action-btn {
+            padding: 6px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 3px;
+            background-color: #fff;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: all 0.2s;
+        }
+
+        .action-btn.primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .action-btn:hover {
+            background-color: #f0f0f0;
+        }
+
+        .action-btn.primary:hover {
+            background-color: #1a252f;
+        }
+
+        /* 表单组 */
+        .form-group {
+            margin: 15px 0;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid var(--border-color);
+            border-radius: 3px;
+            font-family: inherit;
+            font-size: 14px;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+        }
+
+        /* 按钮组 */
+        .btn-group {
+            display: flex;
+            margin-top: 10px;
+        }
+
+        /* Webhook设置区域 */
+        .webhook-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+        }
+
+        /* 设置区域标题 */
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            padding-left: 8px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        /* 两列布局 */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        /* 使用说明区域 */
+        .instructions-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+        }
+
+        .instructions-content {
+            max-height: 400px;
+            overflow-y: auto;
+            padding: 10px;
+            background-color: #fafafa;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--text-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-bar">
+        <a href="popup.html" class="nav-item" id="Zhuye">主页</a>
+        <a href="settings.html" class="nav-item active" id="Peizhi">配置</a>
+    </div>
+
+    <div class="main-content">
+        <div class="setting-item">
+            <div class="setting-title" id="settingClearCache">清理缓存</div>
+            <div>
+                <button id="settingClearLocalStorage" class="action-btn primary">清理</button>
+            </div>
+        </div>
+
+        <div class="setting-item">
+            <div class="setting-title" id="settingGlobalFloatingWindow">全局悬浮窗</div>
+            <div id="global_float" class="toggle-btn"></div>
+        </div>
+
+        <div class="setting-item">
+            <div class="setting-title" id="settingAutoTimeout">自动超时</div>
+            <div id="fetch_timeout" class="toggle-btn"></div>
+        </div>
+
+        <div class="setting-item">
+            <div class="setting-title" id="settingSafe">安全模式</div>
+            <div id="settingSafeMode" class="toggle-btn"></div>
+        </div>
+
+        <div class="webhook-section">
+            <div class="section-title" id="settingWebhook">Webhook</div>
+            <div class="form-group">
+                <label id="settingWebhookUrl">回调地址</label>
+                <input type="text" id="url" placeholder="请输入回调地址">
+            </div>
+
+            <div class="two-column">
+                <div class="form-group">
+                    <label id="settingWebhookMethod">请求方法</label>
+                    <select id="method">
+                        <option value="GET">GET</option>
+                        <option value="POST">POST</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label id="settingWebhookArg">请求参数</label>
+                    <input type="text" id="arg" placeholder="请输入请求参数">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label id="settingWebhookHeaders">自定义headers</label>
+                <textarea id="headers" placeholder='{
+    "auth": "auth_key"
+}'></textarea>
+            </div>
+
+            <div class="btn-group">
+                <button id="reset" class="action-btn settingResetAndSave">置空并保存</button>
+                <button id="save" class="action-btn primary settingSave">保存</button>
+            </div>
+        </div>
+
+        <div class="webhook-section">
+            <div class="section-title" id="settingDomainAllowList">域名白名单</div>
+            <div class="form-group">
+                <textarea id="allowlist" placeholder="请输入域名白名单，每行一个"></textarea>
+            </div>
+            <div class="btn-group">
+                <button id="reset_allowlist" class="action-btn settingResetAndSave">置空并保存</button>
+                <button id="save_allowlist" class="action-btn primary settingSave">保存</button>
+            </div>
+        </div>
+
+        <div class="instructions-section">
+            <div class="section-title" id="settingInstructions">使用说明</div>
+            <div class="instructions-content">
+                <div id="instructions-text"></div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="../js/settings.js"></script>
+</body>
+</html>

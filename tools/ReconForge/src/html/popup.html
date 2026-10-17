@@ -1,0 +1,375 @@
+<!--  
+@Date    : 2020-09-12 16:26:48
+@Author  : residuallaugh 
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --background-color: #f5f7fa;
+            --border-color: #e8e8e8;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --danger-color: #e74c3c;
+            --text-color: #333;
+            --text-light: #7f8c8d;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 780px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 14px;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+
+        /* 导航栏样式 */
+        .nav-bar {
+            display: flex;
+            height: 40px;
+            margin: 15px 15px 0;
+            border: 1px solid var(--border-color);
+            border-radius: 4px 4px 0 0;
+            overflow: hidden;
+        }
+
+        .nav-item {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            background-color: #fff;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+
+        .nav-item.active {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+
+        .nav-item:hover:not(.active) {
+            background-color: #f0f0f0;
+        }
+
+        /* 主内容区域 */
+        .main-content {
+            width: 780px;
+            min-height: 600px;
+            margin: 0 15px 15px;
+            background-color: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 0 0 4px 4px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        /* 标签页导航 */
+        .tab-nav {
+            display: flex;
+            border-bottom: 1px solid var(--border-color);
+            background-color: #fafafa;
+        }
+
+        .tab-nav-item {
+            padding: 12px 20px;
+            cursor: pointer;
+            border-right: 1px solid var(--border-color);
+            transition: all 0.3s;
+        }
+
+        .tab-nav-item:hover {
+            background-color: #eee;
+        }
+
+        .tab-nav-item.active {
+            background-color: #fff;
+            border-bottom: 3px solid var(--secondary-color);
+            font-weight: bold;
+        }
+
+        /* 标签页内容 */
+        .tab-content {
+            padding: 20px;
+            max-height: 550px;
+            overflow-y: auto;
+        }
+
+        .tab-pane {
+            display: none;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
+        /* 任务状态 */
+        .task-status {
+            padding: 10px 20px;
+            background-color: #fff;
+            border-bottom: 1px solid var(--border-color);
+            font-weight: 500;
+        }
+
+        /* 标题样式 */
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin: 15px 0 10px;
+            padding-left: 8px;
+            border-left: 4px solid var(--primary-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* 复制按钮 */
+        .copy-btn {
+            background: none;
+            border: none;
+            color: var(--secondary-color);
+            cursor: pointer;
+            font-size: 12px;
+            padding: 2px 6px;
+            border-radius: 3px;
+            transition: all 0.2s ease;
+        }
+
+        .copy-btn:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        /* 内容区域 */
+        .content-area {
+            min-height: 24px;
+            padding: 8px;
+            background-color: #fafafa;
+            border: 1px solid var(--border-color);
+            border-radius: 3px;
+            word-break: break-word;
+            white-space: pre-wrap;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.4;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        /* 来源信息样式 */
+        .source-container {
+            margin-bottom: 10px;
+        }
+        
+        .source-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 4px;
+        }
+        
+        .source-btn {
+            background: none;
+            border: 1px solid #3498db;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-right: 8px;
+            padding: 2px 6px;
+            font-size: 12px;
+        }
+        
+        .source-url {
+            font-size: 12px;
+            color: #7f8c8d;
+            flex: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+        .data-list {
+            padding-left: 15px;
+            border-left: 2px solid #3498db;
+        }
+
+        /* 批量复制按钮 */
+        .batch-copy-container {
+            margin: 15px 0;
+            padding: 10px;
+            background-color: #f0f8ff;
+            border-radius: 4px;
+            border: 1px solid #cce6ff;
+        }
+
+        .batch-copy-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .batch-copy-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .batch-copy-btn {
+            padding: 6px 12px;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .batch-copy-btn:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-bar">
+        <a href="popup.html" class="nav-item active" id="Zhuye">主页</a>
+        <a href="settings.html" class="nav-item" id="Peizhi">配置</a>
+    </div>
+    
+    <div class="task-status" id="taskstatus">处理中...</div>
+    
+    <div class="main-content">
+        <!-- 标签页导航 -->
+        <div class="tab-nav">
+            <div class="tab-nav-item active" data-tab="basic">基础信息</div>
+            <div class="tab-nav-item" data-tab="paths">路径信息</div>
+            <div class="tab-nav-item" data-tab="sensitive">敏感信息</div>
+        </div>
+        
+        <!-- 标签页内容 -->
+        <div class="tab-content">
+            <!-- 基础信息标签 -->
+            <div class="tab-pane active" id="basic-tab">
+                <div class="section-title">
+                    <span id="popupIp">IP</span>
+                    <button type="button" class="copy-btn" name="ip" id="copyIp">复制</button>
+                </div>
+                <div class="content-area" id="ip">🈚️</div>
+                
+                <div class="section-title">
+                    <span id="popupIpPort">IP_PORT</span>
+                    <button class="copy-btn" name="ip_port" id="copyIpPort">复制</button>
+                </div>
+                <div class="content-area" id="ip_port">🈚️</div>
+                
+                <div class="section-title">
+                    <span id="popupDomain">域名</span>
+                    <button class="copy-btn" name="domain" id="copyDomain">复制</button>
+                </div>
+                <div class="content-area" id="domain">🈚️</div>
+                
+                <div class="section-title">
+                    <span id="popupUrl">Url</span>
+                    <button class="copy-btn" name="url">复制</button>
+                </div>
+                <div class="content-area" id="url">🈚️</div>
+            </div>
+            
+            <!-- 路径信息标签 -->
+            <div class="tab-pane" id="paths-tab">
+                <div class="batch-copy-container">
+                    <div class="batch-copy-title">批量复制</div>
+                    <div class="batch-copy-buttons">
+                        <button class="batch-copy-btn" id="copyAllPaths">复制所有路径</button>
+                        <button class="batch-copy-btn" id="copyDomainPaths">复制域名+路径</button>
+                        <button class="batch-copy-btn" id="exportData">导出 CSV</button>
+                    </div>
+                </div>
+                
+                <div class="section-title">
+                    <span id="popupPath">Path</span>
+                    <div>
+                        <button class="copy-btn" name="path">复制</button>
+                        <button class="copy-url-btn copy-btn" data-target="path">复制URL</button>
+                    </div>
+                </div>
+                <div class="content-area" id="path">🈚️</div>
+                
+                <div class="section-title">
+                    <span id="popupIncompletePath">IncompletePath</span>
+                    <div>
+                        <button class="copy-btn" name="incomplete_path">复制</button>
+                        <button class="copy-url-btn copy-btn" data-target="incomplete_path">复制URL</button>
+                    </div>
+                </div>
+                <div class="content-area" id="incomplete_path">🈚️</div>
+                
+                <div class="section-title">
+                    <span id="popupStaticPath">StaticUrl</span>
+                    <div>
+                        <button class="copy-btn" name="static">复制</button>
+                        <button class="copy-url-btn copy-btn" data-target="static">复制URL</button>
+                    </div>
+                </div>
+                <div class="content-area" id="static">🈚️</div>
+            </div>
+            
+            <!-- 网络信息标签 -->
+            <div class="tab-pane" id="network-tab">
+                <div class="section-title">
+                    <span id="popupUrl">Url</span>
+                    <button class="copy-btn" name="url">复制</button>
+                </div>
+                <div class="content-area" id="url">🈚️</div>
+            </div>
+            
+            <!-- 敏感信息标签 -->
+            <div class="tab-pane" id="sensitive-tab">
+                <div class="section-title">
+                    <span id="popupMobile">手机号</span>
+                    <button class="copy-btn" name="mobile" id="copyMobile">复制</button>
+                </div>
+                <div class="content-area" id="mobile">🈚️</div>
+            
+                <div class="section-title">
+                    <span id="popupSfz">身份证</span>
+                    <button class="copy-btn" name="sfz" id="copySfz">复制</button>
+                </div>
+                <div class="content-area" id="sfz">🈚️</div>
+
+                <div class="section-title">
+                    <span id="popupMail">邮箱</span>
+                    <button class="copy-btn" name="mail" id="copyMail">复制</button>
+                </div>
+                <div class="content-area" id="mail">🈚️</div>
+                
+                <div class="section-title">
+                    <span id="popupJwt">JWT</span>
+                    <button class="copy-btn" name="jwt" id="copyJwt">复制</button>
+                </div>
+                <div class="content-area" id="jwt">🈚️</div>
+                
+                <div class="section-title">
+                    <span id="popupAlgorithm">算法</span>
+                    <button class="copy-btn" name="algorithm" id="copyAlgorithm">复制</button>
+                </div>
+                <div class="content-area" id="algorithm">🈚️</div>
+                
+                <div class="section-title">
+                    <span id="popupSecret">Secret</span>
+                    <button class="copy-btn" name="secret" id="copySecret">复制</button>
+                </div>
+                <div class="content-area" id="secret">🈚️</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/popup.js"></script>
+</body>
+</html>
